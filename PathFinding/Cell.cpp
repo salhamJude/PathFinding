@@ -46,11 +46,12 @@ bool Cell::hasCost() const
 	return gotScore;
 }
 
-float Cell::calculateScore(float cost, float lambda, int gposX, int gposY, float parentg)
+float Cell::calculateScore(float cost, float lambda, int gposX, int gposY, float parentg, float d, float d2)
 {
+
 	if (gotScore)
 		return f;
-	h = cost * (abs(posx - gposX) + abs(posY - gposY));
+	h = cost * (d * ((abs(posx - gposX) + abs(posY - gposY)) + (d2 - (2 * d) * fmin(abs(posx - gposX), abs(posY - gposY)))));
 	g = 1.0 + lambda * (parentg - 1.0);
 	f = h + g;
 	gotScore = true;

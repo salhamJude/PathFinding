@@ -4,6 +4,7 @@
 #include "enumeration.h"
 #include <ctime>
 #include <stdlib.h>
+#include <cmath>
 
 #ifdef _WIN32
 	#include<Windows.h>
@@ -26,6 +27,8 @@ private:
 	Cell** cells;
 	float cost;
 	float lambda;
-	Direction winner(float* scores, int pos[4][4], int gposX, int gposY);
+	float D;
+	float D2;
+	Direction winner(float* scores, int pos[8][2], int gposX, int gposY);
 };
 

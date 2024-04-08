@@ -14,7 +14,7 @@ public:
 	void clear();
 	void display() const;
 	bool hasCost() const ;
-	float calculateScore(float cost, float lambda, int gposX, int gposY, float parentg);
+	float calculateScore(float cost, float lambda, int gposX, int gposY, float parentg, float d, float d2);
 	float getG() const;
 	Cell* operator=(const Cell& cell);
 	bool isSame(const Cell& cell) const;

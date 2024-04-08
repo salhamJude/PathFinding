@@ -112,6 +112,10 @@ void Init::drawGrid(float* scores, Cell current, Cell start, Cell goal)
 	std::cout << "Down score : " << scores[1] << std::endl;
 	std::cout << "Right score : " << scores[2] << std::endl;
 	std::cout << "Up score : " << scores[3] << std::endl;
+	std::cout << "Up Left score : " << scores[4] << std::endl;
+	std::cout << "Up Right score : " << scores[5] << std::endl;
+	std::cout << "Down Left score : " << scores[6] << std::endl;
+	std::cout << "Down Right score : " << scores[7] << std::endl;
 }
 
 void Init::generateWalls()
