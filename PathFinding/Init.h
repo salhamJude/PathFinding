@@ -25,6 +25,8 @@ public :
 	bool isPath(int x, int y);
 	bool isGoalPosition(int x, int y);
 	bool isStartPositon(int x, int y);
+	int getGridsize();
+
 private :
 	int gridsize;
 	int start_position[2];

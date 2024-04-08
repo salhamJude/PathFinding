@@ -51,6 +51,11 @@ Init::Init() {
 	drawGrid();
 }
 
+Init::~Init()
+{
+	delete grid;
+}
+
 void Init::drawGrid()
 {
 	switch (os) {
@@ -98,7 +103,7 @@ void Init::drawGrid()
 
 void Init::generateWalls()
 {
-	int nbrWall = 10; //0 + rand() % (5 - 0 + 1 - 1);
+	int nbrWall = (gridsize / 3 ) + rand() % ((gridsize / 2) - (gridsize / 5) + 1 - 1);
 	int maxwallLength = gridsize / 2 + (gridsize / 4);
 	int wallLength, posY, posX;
 	Direction dir;
@@ -293,4 +298,9 @@ bool Init::isGoalPosition(int x, int y)
 bool Init::isStartPositon(int x, int y)
 {
 	return grid[x][y] == INITIAL;
+}
+
+int Init::getGridsize()
+{
+	return gridsize;
 }
