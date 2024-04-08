@@ -1,22 +1,31 @@
 #pragma once
 #include <iostream>
+#include <math.h>
+#include "enumeration.h"
 class Cell
 {
 public:
 	Cell();
-	Cell(float h, float g, int x, int y);
-	Cell(int x, int y);
+	Cell(float h, float g, int x, int y, GridElement type);
+	Cell(int x, int y, GridElement type);
 	void setPosition(int x, int y);
+	int getXposition() const;
+	int getYposition() const;
 	void clear();
 	void display() const;
 	bool hasCost() const ;
+	float calculateScore(float cost, float lambda, int gposX, int gposY, float parentg);
+	float getG() const;
+	Cell* operator=(const Cell& cell);
+	bool isSame(const Cell& cell) const;
 private:
 	int posx;
 	int posY;
 	float h;
 	float g;
 	float f;
-	bool gotCost;
+	bool gotScore;
+	GridElement type;
 };
 
 

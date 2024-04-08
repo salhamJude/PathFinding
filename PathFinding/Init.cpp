@@ -43,11 +43,11 @@ Init::Init() {
 	do
 	{
 		std::cout << "Enter the x coordination of the goal position : ";
-		std::cin >> start_position[0];
+		std::cin >> goal_postion[0];
 		std::cout << "Enter the y coordination of the goal position : ";
-		std::cin >> start_position[1];
-	} while (start_position[0] >= gridsize or start_position[1] >= gridsize or isWall(start_position[0], start_position[1]) or isStartPositon(start_position[0], start_position[1]));
-	setGoalPosition(start_position[0], start_position[1]);
+		std::cin >> goal_postion[1];
+	} while (goal_postion[0] >= gridsize or goal_postion[1] >= gridsize or isWall(goal_postion[0], goal_postion[1]) or isStartPositon(goal_postion[0], goal_postion[1]));
+	setGoalPosition(goal_postion[0], goal_postion[1]);
 	drawGrid();
 }
 
@@ -58,6 +58,7 @@ Init::~Init()
 
 void Init::drawGrid()
 {
+
 	switch (os) {
 	case OS_WINDOWS:
 		system("cls");
@@ -99,6 +100,18 @@ void Init::drawGrid()
 		std::cout << std::endl;
 	}
 
+}
+
+void Init::drawGrid(float* scores, Cell current, Cell start, Cell goal)
+{
+	drawGrid();
+	std::cout << "Start position : "; start.display(); std::cout << std::endl;
+	std::cout << "Goal position : "; goal.display(); std::cout << std::endl;
+	std::cout << "Current position : "; current.display(); std::cout << std::endl;
+	std::cout << "Left score : " << scores[0] << std::endl;
+	std::cout << "Down score : " << scores[1] << std::endl;
+	std::cout << "Right score : " << scores[2] << std::endl;
+	std::cout << "Up score : " << scores[3] << std::endl;
 }
 
 void Init::generateWalls()
@@ -300,7 +313,22 @@ bool Init::isStartPositon(int x, int y)
 	return grid[x][y] == INITIAL;
 }
 
+int* Init::getStartPosition()
+{
+	return start_position;
+}
+
+int* Init::getGoalPosition()
+{
+	return goal_postion;
+}
+
 int Init::getGridsize()
 {
 	return gridsize;
+}
+
+GridElement**  Init::getGrid()
+{
+	return grid;
 }

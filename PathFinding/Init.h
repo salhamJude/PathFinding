@@ -4,6 +4,7 @@
 #include "enumeration.h"
 #include <ctime>
 #include <stdlib.h>
+#include "Cell.h"
 
 #define OS_WINDOWS 1
 #define OS_LINUX   2
@@ -20,13 +21,16 @@ public :
 	Init();
 	~Init();
 	void drawGrid();
+	void drawGrid(float* scores,Cell current, Cell start, Cell goal);
 	bool isWall(int x, int y);
 	bool isRoad(int x, int y);
 	bool isPath(int x, int y);
 	bool isGoalPosition(int x, int y);
 	bool isStartPositon(int x, int y);
+	int* getStartPosition();
+	int* getGoalPosition();
 	int getGridsize();
-
+	GridElement**  getGrid();
 private :
 	int gridsize;
 	int start_position[2];

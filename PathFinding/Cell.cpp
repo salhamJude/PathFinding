@@ -1,14 +1,14 @@
 #include "Cell.h"
 
-Cell::Cell():h(0), g(0), posx(0), posY(0), f(0.0), gotCost(false)
+Cell::Cell():h(0), g(0), posx(0), posY(0), f(0.0), gotScore(false), type(ROAD)
 {
 }
 
-Cell::Cell(float h, float g, int x, int y) : h(h), g(g), posx(x), posY(y), f(0.0), gotCost(false)
+Cell::Cell(float h, float g, int x, int y, GridElement type) : h(h), g(g), posx(x), posY(y), f(0.0), gotScore(false), type(type)
 {
 }
 
-Cell::Cell(int x, int y) : h(0), g(0), posx(x), posY(y), f(0.0), gotCost(false)
+Cell::Cell(int x, int y, GridElement type) : h(0), g(0), posx(x), posY(y), f(0.0), gotScore(false), type(type)
 {
 }
 
@@ -18,12 +18,22 @@ void Cell::setPosition(int x, int y)
 	posY = y;
 }
 
+int Cell::getXposition() const
+{
+	return posx;
+}
+
+int Cell::getYposition() const
+{
+	return posY;
+}
+
 void Cell::clear()
 {
 	h = 0.0;
 	g = 0.0;
 	f = 0.0;
-	gotCost = false;
+	gotScore = false;
 }
 
 void Cell::display() const
@@ -33,5 +43,41 @@ void Cell::display() const
 
 bool Cell::hasCost() const 
 {
-	return gotCost;
+	return gotScore;
+}
+
+float Cell::calculateScore(float cost, float lambda, int gposX, int gposY, float parentg)
+{
+	if (gotScore)
+		return f;
+	h = cost * (abs(posx - gposX) + abs(posY - gposY));
+	g = 1.0 + lambda * (parentg - 1.0);
+	f = h + g;
+	gotScore = true;
+
+	return f;
+}
+
+float Cell::getG() const
+{
+	return g;
+}
+
+Cell* Cell::operator=(const Cell& cell)
+{
+	this->f = cell.f;
+	this->g = cell.g;
+	this->gotScore = cell.gotScore;
+	this->h = cell.h;
+	this->type = cell.type;
+	this->posx = cell.posx;
+	this->posY = cell.posY;
+
+	return this;
+}
+
+bool Cell::isSame(const Cell& cell) const
+{
+	return (this->posx == cell.posx && this->posY == cell.posY);
+	
 }
