@@ -88,13 +88,17 @@ void Init::drawGrid()
 			if(grid[i][j] == ROAD)
 				std::cout << " ";
 			else if (grid[i][j] == WALL)
-				std::cout << "X";
+				std::cout << "#";
 			else if (grid[i][j] == PATH)
-				std::cout << "1";
+				std::cout << "*";
 			else if (grid[i][j] == INITIAL)
 				std::cout << "S";
 			else if (grid[i][j] == GOAL)
 				std::cout << "G";
+			else if (grid[i][j] == CURRENT)
+				std::cout << "*";
+			else if (grid[i][j] == TEMPWALL)
+				std::cout << " ";
 			std::cout << "|";
 		}
 		std::cout << std::endl;

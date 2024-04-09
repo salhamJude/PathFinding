@@ -48,11 +48,13 @@ bool Cell::hasCost() const
 
 float Cell::calculateScore(float cost, float lambda, int gposX, int gposY, float parentg, float d, float d2)
 {
-
+	/*
 	if (gotScore)
-		return f;
-	h = cost * (d * ((abs(posx - gposX) + abs(posY - gposY)) + (d2 - (2 * d) * fmin(abs(posx - gposX), abs(posY - gposY)))));
-	g = 1.0 + lambda * (parentg - 1.0);
+		return f;*/
+	
+	//h = 1.0 * (d * ((abs(posx - gposX) + abs(posY - gposY)) + ((d2 - 2 * d) * fmin(abs(posx - gposX), abs(posY - gposY)))));
+	h = sqrt(pow(posx - gposX, 2) + pow(posY - gposY, 2));
+	g = parentg + cost;
 	f = h + g;
 	gotScore = true;
 

@@ -30,5 +30,8 @@ private:
 	float D;
 	float D2;
 	Direction winner(float* scores, int pos[8][2], int gposX, int gposY);
+	bool allScoresNegative(float* scores);
+	void  updateCurrent(Direction di, int* update);
+	float chebyshevDistance(int x1, int y1, int x2, int y2);
 };
 

@@ -26,6 +26,7 @@ private:
 	float f;
 	bool gotScore;
 	GridElement type;
+
 };
 
 
