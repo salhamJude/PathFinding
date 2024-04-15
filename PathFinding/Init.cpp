@@ -97,7 +97,7 @@ void Init::drawGrid()
 				std::cout << "G";
 			else if (grid[i][j] == CURRENT)
 				std::cout << "*";
-			else if (grid[i][j] == TEMPWALL)
+			else if (grid[i][j] == VISITED)
 				std::cout << " ";
 			std::cout << "|";
 		}

@@ -18,6 +18,8 @@ public:
 	float getG() const;
 	Cell* operator=(const Cell& cell);
 	bool isSame(const Cell& cell) const;
+	GridElement getType() const;
+	void setType(GridElement ttype);
 private:
 	int posx;
 	int posY;

@@ -15,6 +15,13 @@
 #elif __unix__
 	#include<unistd.h>
 #endif
+
+struct Path {
+	struct Path* parent = NULL;
+	int x = -1, y = -1;
+};
+
+
 class PathFinder
 {
 
@@ -23,15 +30,16 @@ public :
 	~PathFinder();
 	bool findPath(GridElement** grid, int sposX, int sposY, int gposX, int gposY);
 private:
-	Init* init;
-	Cell** cells;
+	
+	void showPaths();
 	float cost;
 	float lambda;
+	Init* init;
+	Cell** cells;
 	float D;
 	float D2;
-	Direction winner(float* scores, int pos[8][2], int gposX, int gposY);
-	bool allScoresNegative(float* scores);
-	void  updateCurrent(Direction di, int* update);
-	float chebyshevDistance(int x1, int y1, int x2, int y2);
+	unsigned int roads;
+	unsigned int visited;
+	struct Path* paths;
 };
 

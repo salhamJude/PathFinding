@@ -84,3 +84,13 @@ bool Cell::isSame(const Cell& cell) const
 	return (this->posx == cell.posx && this->posY == cell.posY);
 	
 }
+
+GridElement Cell::getType() const
+{
+	return type;
+}
+
+void Cell::setType(GridElement ttype)
+{
+	type = ttype;
+}
