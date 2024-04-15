@@ -1,5 +1,3 @@
 #pragma once
 
 enum GridElement { WALL, ROAD, PATH, INITIAL, GOAL, CURRENT, VISITED };
-enum Direction {UP = 1, LEFT, DOWN, RIGHT, UPLELFT, UPRIGHT, DOWNLEFT, DOWNRIGHT};
-enum Heuristic { MANHATTAN, EUCLIDEAN, CHEBYSHEV, OCTILE };
